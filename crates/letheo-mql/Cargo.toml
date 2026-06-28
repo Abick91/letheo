@@ -1,0 +1,13 @@
+[package]
+name = "letheo-mql"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+description = "MQL — Mnemonic Query Language: lexer + parser for the five verbs (no SQL CRUD)."
+
+[dependencies]
+
+[lib]
+name = "letheo_mql"
+path = "src/lib.rs"

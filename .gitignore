@@ -1,0 +1,31 @@
+# Rust
+/target
+**/target
+Cargo.lock
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+
+# Node / frontend deps
+**/node_modules/
+
+# Downloaded models (local-first; all-MiniLM-L6-v2 for CandleProvider)
+.models/
+.env
+
+# Real datasets and caches (do not version — keep the repo clean)
+/data/
+*.parquet
+
+# Internal design docs (kept locally, not published)
+/docs/
+
+# Roadmap (internal living document, not published)
+ROADMAP.md
+
+# Logs
+*.log

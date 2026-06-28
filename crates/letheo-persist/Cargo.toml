@@ -1,0 +1,17 @@
+[package]
+name = "letheo-persist"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+description = "Local-first persistence: per-subject snapshots of long-term memory (archetypes)."
+
+[dependencies]
+letheo-core = { path = "../letheo-core" }
+redb = "4.1.0"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[lib]
+name = "letheo_persist"
+path = "src/lib.rs"

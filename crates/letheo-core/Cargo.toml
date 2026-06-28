@@ -1,0 +1,15 @@
+[package]
+name = "letheo-core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+description = "Cognitive Runtime core: physics of forgetting, perception, synthesis, archetypes."
+
+[dependencies]
+# Fase 1-2: intencionalmente sin dependencias externas (corre offline).
+# Tokio para el bucle async que "respira" se integra en Fase 3.
+
+[lib]
+name = "letheo_core"
+path = "src/lib.rs"

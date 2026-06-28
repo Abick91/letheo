@@ -1,0 +1,27 @@
+[package]
+name = "letheo-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+description = "MQL REPL: speak the language, execute against the runtime, and persist memory."
+
+[dependencies]
+letheo-core = { path = "../letheo-core" }
+# El binario embebe con Candle real (all-MiniLM-L6-v2); nada de Mock en producto.
+letheo-inference = { path = "../letheo-inference", features = ["candle"] }
+letheo-mql = { path = "../letheo-mql" }
+letheo-exec = { path = "../letheo-exec" }
+letheo-persist = { path = "../letheo-persist" }
+
+[dev-dependencies]
+# Los tests del REPL usan MockProvider (doble determinista, sin modelo).
+letheo-inference = { path = "../letheo-inference", features = ["testing"] }
+
+[lib]
+name = "letheo_cli"
+path = "src/lib.rs"
+
+[[bin]]
+name = "letheo"
+path = "src/main.rs"

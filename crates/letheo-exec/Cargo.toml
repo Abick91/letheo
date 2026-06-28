@@ -1,0 +1,20 @@
+[package]
+name = "letheo-exec"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+description = "MQL executor: translates the AST into real calls to the Cognitive Runtime."
+
+[dependencies]
+letheo-core = { path = "../letheo-core" }
+letheo-mql = { path = "../letheo-mql" }
+letheo-inference = { path = "../letheo-inference" }
+
+[dev-dependencies]
+# MockProvider (doble determinista) solo para los tests; no entra en el build normal.
+letheo-inference = { path = "../letheo-inference", features = ["testing"] }
+
+[lib]
+name = "letheo_exec"
+path = "src/lib.rs"

@@ -1,0 +1,28 @@
+[package]
+name = "letheo-py"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "PyO3 bindings: the Letheo Cognitive Runtime exposed to Python."
+
+[lib]
+name = "letheo"
+crate-type = ["cdylib"]
+
+# `candle` ON por defecto: el runtime vivo embebe con all-MiniLM-L6-v2 real (no Mock).
+# Para un build sin modelo/red (Mock determinista), compilar con `--no-default-features`.
+[features]
+default = ["candle"]
+candle = ["letheo-inference/candle"]
+
+[dependencies]
+letheo-core = { path = "../../crates/letheo-core" }
+letheo-inference = { path = "../../crates/letheo-inference" }
+letheo-mql = { path = "../../crates/letheo-mql" }
+letheo-exec = { path = "../../crates/letheo-exec" }
+letheo-persist = { path = "../../crates/letheo-persist" }
+letheo-index = { path = "../../crates/letheo-index" }
+
+[dependencies.pyo3]
+version = "0.23"
+features = ["extension-module", "abi3-py39"]

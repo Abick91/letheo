@@ -1,0 +1,18 @@
+[package]
+name = "letheo-calibration"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+description = "Empirical sweep of the thresholds (θ_fade / θ_redundancy / θ_anomaly) with a Pareto frontier."
+
+[dependencies]
+letheo-core = { path = "../letheo-core" }
+
+[lib]
+name = "letheo_calibration"
+path = "src/lib.rs"
+
+[[bin]]
+name = "sweep"
+path = "src/main.rs"

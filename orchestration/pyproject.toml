@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "letheo-orchestration"
+version = "0.1.0"
+description = "High-level Python layer over the Letheo Cognitive Runtime."
+requires-python = ">=3.9"
+dependencies = ["letheo"]
+
+[project.optional-dependencies]
+llm = ["openai>=1.40"]   # mismo SDK sirve para OpenAI y DeepSeek (cambia base_url)
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["letheo_orchestration*"]
