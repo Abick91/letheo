@@ -705,11 +705,7 @@ mod tests {
 
         // `load_store` must IGNORE `facts.json` (not parse it as an archetype); facts load separately.
         let restored = load_store(&dir).unwrap();
-        assert_eq!(
-            restored.len(),
-            2,
-            "archetypes load; facts.json is ignored"
-        );
+        assert_eq!(restored.len(), 2, "archetypes load; facts.json is ignored");
         assert_eq!(
             load_facts(&dir).unwrap().len(),
             1,

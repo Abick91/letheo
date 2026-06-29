@@ -147,10 +147,9 @@ pub fn predict_next(arc: &[ArcMilestone], current: &str) -> Option<String> {
 /// known direction in the archetype.
 pub fn materialize(archetype: &Archetype, insight: &Insight) -> Option<(String, Vector)> {
     let (text, label) = match insight {
-        Insight::Transition { from, to, .. } => (
-            format!("behaviour transition: {from} → {to}"),
-            to.as_str(),
-        ),
+        Insight::Transition { from, to, .. } => {
+            (format!("behaviour transition: {from} → {to}"), to.as_str())
+        }
         Insight::Revival { domain } => (
             format!("recurring behaviour (revival): {domain}"),
             domain.as_str(),

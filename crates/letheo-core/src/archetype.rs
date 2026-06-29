@@ -392,11 +392,7 @@ mod tests {
         }
         let refs: Vec<&Perception> = ps.iter().collect();
         let iv = distill("u", &refs, DistillConfig::default()).unwrap();
-        assert_eq!(
-            iv.modes.len(),
-            2,
-            "two opposite behaviours → two modes"
-        );
+        assert_eq!(iv.modes.len(), 2, "two opposite behaviours → two modes");
 
         let mut store = ArchetypeStore::new();
         store.imprint(&iv, Resilience::High, 0.0);

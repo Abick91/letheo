@@ -177,10 +177,7 @@ mod tests {
         let refs: Vec<&Perception> = ps.iter().collect();
         let iv = distill("user:X", &refs, DistillConfig::default()).unwrap();
         assert_eq!(iv.absorbed, 5);
-        assert!(
-            iv.redundant >= 4,
-            "the dense cluster is mostly redundant"
-        );
+        assert!(iv.redundant >= 4, "the dense cluster is mostly redundant");
         assert!(
             iv.anomalies.is_empty(),
             "no novelty in a homogeneous cluster"

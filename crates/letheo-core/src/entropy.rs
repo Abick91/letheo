@@ -139,10 +139,7 @@ mod tests {
     fn weight_is_asymptotic_never_zero() {
         let t = EntropyTrace::new(1.0, HALF_DAY, 0.0);
         let w = t.weight(HALF_DAY * 1000.0);
-        assert!(
-            w > 0.0,
-            "decay is asymptotic: it never reaches exactly 0"
-        );
+        assert!(w > 0.0, "decay is asymptotic: it never reaches exactly 0");
         assert!(w < 1e-6);
     }
 
@@ -178,7 +175,10 @@ mod tests {
         // linear): usage frequency no longer dominates the weight without a ceiling.
         let mut t = EntropyTrace::new(1.0, HALF_DAY, 0.0);
         t.reinforce(0.0, 0.0);
-        assert!((t.reinforcement - 1.0).abs() < 1e-9, "1st reinforcement = +1.0");
+        assert!(
+            (t.reinforcement - 1.0).abs() < 1e-9,
+            "1st reinforcement = +1.0"
+        );
         for _ in 0..50 {
             t.reinforce(0.0, 0.0);
         }

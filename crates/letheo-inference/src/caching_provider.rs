@@ -136,11 +136,7 @@ mod tests {
         let c = p.embed("purchase shoes");
         assert_eq!(a, b);
         assert_eq!(b, c);
-        assert_eq!(
-            p.inner().calls(),
-            1,
-            "embedded only once despite 3 queries"
-        );
+        assert_eq!(p.inner().calls(), 1, "embedded only once despite 3 queries");
 
         let s = p.stats();
         assert_eq!(s.misses, 1);

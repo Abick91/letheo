@@ -500,10 +500,7 @@ mod tests {
         // The fact costs 25 → 5 remain < tokens_per_vector(24) ⇒ gist is skipped, budget intact.
         let u = evoke_unified(&archetypes, &facts, &req, &[1.0, 0.0], 30, 0.0, |_| 25);
         assert_eq!(u.facts.len(), 1);
-        assert!(
-            u.gist.is_none(),
-            "facts consumed the budget: no gist"
-        );
+        assert!(u.gist.is_none(), "facts consumed the budget: no gist");
         assert_eq!(u.total_tokens, 25);
         assert!(u.total_tokens <= 30);
     }
@@ -513,10 +510,7 @@ mod tests {
         let s = store_with(100_000, 1000);
         let req = EvokeRequest::new("user:Xolotl", 800);
         let ctx = evoke(&s, &req, 0.0).unwrap();
-        assert!(
-            ctx.token_estimate <= 800,
-            "context fits within the budget"
-        );
+        assert!(ctx.token_estimate <= 800, "context fits within the budget");
     }
 
     #[test]
@@ -696,9 +690,6 @@ mod tests {
             .find(|(l, _)| l == "trail")
             .expect("trail series")
             .1;
-        assert!(
-            trail[0] < 0.4 && trail[2] > 0.8,
-            "trail rising: {trail:?}"
-        );
+        assert!(trail[0] < 0.4 && trail[2] > 0.8, "trail rising: {trail:?}");
     }
 }

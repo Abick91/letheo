@@ -373,10 +373,7 @@ mod tests {
             ),
             "reflection synthesises the arc transition: {insights:?}"
         );
-        assert!(
-            rt.reflect("ghost").is_empty(),
-            "no archetype, no insights"
-        );
+        assert!(rt.reflect("ghost").is_empty(), "no archetype, no insights");
     }
 
     #[test]

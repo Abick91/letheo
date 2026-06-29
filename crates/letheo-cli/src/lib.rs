@@ -113,10 +113,9 @@ impl<P: Provider> Repl<P> {
                     None => Eval::Output("usage: :save <dir>  (or start with --persist)".into()),
                     Some(d) => {
                         match letheo_persist::save_store(&d, self.exec.runtime().long_term()) {
-                            Ok(n) => Eval::Output(format!(
-                                "💾 saved {n} archetypes to {}",
-                                d.display()
-                            )),
+                            Ok(n) => {
+                                Eval::Output(format!("💾 saved {n} archetypes to {}", d.display()))
+                            }
                             Err(e) => Eval::Output(format!("save error: {e}")),
                         }
                     }
@@ -185,7 +184,9 @@ fn format_result(r: &ExecResult) -> String {
             c.compression_ratio()
         ),
         ExecResult::Faded { swept } => format!("· faded {swept} perception(s)"),
-        ExecResult::Imprinted { archetype, .. } => format!("· imprinted «{archetype}» (consolidated essence)"),
+        ExecResult::Imprinted { archetype, .. } => {
+            format!("· imprinted «{archetype}» (consolidated essence)")
+        }
         ExecResult::Recalled(facts) => {
             if facts.is_empty() {
                 "· recall: no resonating facts".to_string()

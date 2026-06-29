@@ -248,11 +248,7 @@ mod tests {
         }
         let refs: Vec<&Perception> = ps.iter().collect();
         let modes = cluster_modes(&refs, ModeConfig::default());
-        assert_eq!(
-            modes.len(),
-            3,
-            "three coherent modes, not a noisy average"
-        );
+        assert_eq!(modes.len(), 3, "three coherent modes, not a noisy average");
         let labels: Vec<&str> = modes.iter().map(|m| m.label.as_str()).collect();
         assert!(labels.contains(&"noir") && labels.contains(&"docs") && labels.contains(&"scifi"));
         // Each mode points to its direction, not the mean (which would be ~(0.33,0.33,0.33)).

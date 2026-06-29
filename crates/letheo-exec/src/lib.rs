@@ -495,7 +495,10 @@ mod tests {
         }
         // IMPRINT actually changed the physics: essence gained reinforcement (no longer a no-op).
         let a = ex.runtime().long_term().get("u:X").unwrap();
-        assert!(a.trace.reinforcement > 0.0, "IMPRINT consolidated the essence");
+        assert!(
+            a.trace.reinforcement > 0.0,
+            "IMPRINT consolidated the essence"
+        );
     }
 
     #[test]

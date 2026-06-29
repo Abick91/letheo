@@ -33,7 +33,9 @@ fn main() {
     let mut repl = match RealRepl::real(persist.clone()) {
         Ok(r) => r,
         Err(e) => {
-            eprintln!("startup failed (is LETHEO_MODEL_DIR set to the all-MiniLM-L6-v2 model?): {e}");
+            eprintln!(
+                "startup failed (is LETHEO_MODEL_DIR set to the all-MiniLM-L6-v2 model?): {e}"
+            );
             std::process::exit(1);
         }
     };

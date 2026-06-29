@@ -416,11 +416,7 @@ mod tests {
             "redundancy recall: {:?}",
             s.redundancy
         );
-        assert!(
-            s.anomaly.recall() > 0.85,
-            "anomaly recall: {:?}",
-            s.anomaly
-        );
+        assert!(s.anomaly.recall() > 0.85, "anomaly recall: {:?}", s.anomaly);
         // ...without sweeping much legitimate signal.
         assert!(
             s.signal_fade_rate < 0.10,

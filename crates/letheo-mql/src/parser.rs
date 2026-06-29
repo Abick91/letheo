@@ -75,18 +75,14 @@ impl Parser {
     fn expect_string(&mut self) -> PResult<String> {
         match self.next() {
             Token::Str(s) => Ok(s),
-            t => Err(ParseError::new(format!(
-                "expected a string, found {t:?}"
-            ))),
+            t => Err(ParseError::new(format!("expected a string, found {t:?}"))),
         }
     }
 
     fn expect_number(&mut self) -> PResult<f64> {
         match self.next() {
             Token::Number(n) => Ok(n),
-            t => Err(ParseError::new(format!(
-                "expected a number, found {t:?}"
-            ))),
+            t => Err(ParseError::new(format!("expected a number, found {t:?}"))),
         }
     }
 
