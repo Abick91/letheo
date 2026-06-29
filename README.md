@@ -1,17 +1,48 @@
-# Letheo — a Cognitive Runtime for agent memory · v0.1.0
+<div align="center">
 
-> **Letheo is not a database. It's a *Cognitive Runtime*** — an organism that breathes
-> (processes / compresses) and forgets. It doesn't "store and query"; it **perceives, dreams,
-> evokes, and fades**.
+# Letheo
 
-When an agent's history grows, naive memories break at a fixed token budget: stuff the whole past
-into the prompt (unbounded cost), re-summarize with an LLM every step (cost **O(N)**), or RAG — which
-retrieves point facts but is **blind to time**: it doesn't know that something *changed*. Letheo
-distills behaviour into a **fixed-size** structure read at **constant cost**, whether the history is
-4,000 or 1,000,000 events.
+### Your AI agent doesn't have a memory problem. It has a **forgetting** problem.
+
+**A Cognitive Runtime for agent memory** — an organism that perceives, dreams, evokes, and *fades*.
+Memory at **constant cost**, whether the agent's history is 4,000 or 1,000,000 events.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+![Rust](https://img.shields.io/badge/core-Rust-orange.svg)
+![Python](https://img.shields.io/badge/SDK-Python-3776AB.svg)
+![Local-first](https://img.shields.io/badge/local--first-no%20network-success.svg)
+![Tests](https://img.shields.io/badge/cargo%20test-144%20passed-success.svg)
+![Version](https://img.shields.io/badge/version-0.1.0-informational.svg)
+
+</div>
+
+---
+
+> **Letheo is not a database. It's a *Cognitive Runtime*** — it doesn't "store and query"; it
+> **perceives, dreams, evokes, and fades**.
+
+## Why not just RAG?
+
+When an agent's history grows, today's options break at a fixed token budget:
+
+- **Stuff the whole past into the prompt** → unbounded, **O(N)** cost per turn.
+- **Re-summarize with an LLM every step** → still O(N), plus latency and drift.
+- **RAG** → retrieves point facts but is **blind to time**: it ranks by *similarity*, not *recency*.
+  It doesn't know that something *changed*, and its vector store grows forever.
+
+Letheo distills behaviour into a **fixed-size** structure read at **constant cost**.
+
+| | RAG | Letheo |
+|---|---|---|
+| Memory model | Store that **grows** ∞ | **Fixed-size** distilled essence |
+| Cost per recall | O(N) in history | **O(1)** — flat at 4k or 1M events |
+| Recall criterion | Cosine similarity | `relevance · weight(now)` (decay + salience + reinforcement) |
+| Time | Invisible | A coefficient of entropy |
+| Forgetting | None (or manual TTL) | **Native & physical** — nothing is immortal |
+| Exact facts | Mixed into the corpus | Separate **verbatim layer**, same physics |
 
 **Strategic forgetting is a feature, not a bug**: each memory's weight decays by physics (temporal
-entropy) and only the pattern survives. The engine is built to be the **memory of a fleet of
+entropy) and only the pattern survives. Letheo is built to be the **memory of a fleet of
 super-agents**: a single decay physics over **two layers** — episodic (exact facts, hippocampus) and
 semantic (identity / trajectory, neocortex).
 
@@ -132,3 +163,12 @@ Engine (Rust), mature and tested offline: **`cargo test --workspace` → 144 pas
 0 warnings**. Multi-modal archetype with per-mode trajectory, physical retrieval, unified episodic
 two-layer memory, ANN index at scale, generative memory, transactional persistence — under the
 **TRUTH 100%** invariant (zero mock/fake/hardcode on the product path).
+
+---
+
+<div align="center">
+
+**v0.1.0 · MIT.** If memory that forgets by physics resonates with your agent's use case —
+**star the repo** ⭐ and open an issue with your long-lived-agent scenario. I want to break it.
+
+</div>
